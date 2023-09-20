@@ -1,0 +1,44 @@
+version: '3.7'
+
+volumes:
+  db_data: {}
+
+services:
+  distribution_db:
+    image: postgres:14.1
+    environment:
+      POSTGRES_USER: ${DB_USERNAME:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
+      POSTGRES_DB: ${DB_DATABASE:-postgres}
+    ports:
+      - '${DB_HOST:-127.0.0.1}:${DB_PORT:-3001}:5432'
+    restart: ${RESTART_POLICY:-unless-stopped}
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./distribution_db/:/docker-entrypoint-initdb.d/
+
+  db_admin:
+    image: dpage/pgadmin4:6.4
+    entrypoint: >
+      /bin/sh -c "
+      mkdir -p /var/lib/pgadmin/storage/admin_localhost.local/;
+      cp -f /servers/pgpassfile /var/lib/pgadmin/storage/admin_localhost.local/;
+      chmod 600 /var/lib/pgadmin/storage/admin_localhost.local/pgpassfile;
+      chown pgadmin:pgadmin /var/lib/pgadmin/storage/admin_localhost.local/pgpassfile;
+      /entrypoint.sh
+      "
+    depends_on:
+      - distribution_db
+    environment:
+      GUNICORN_ACCESS_LOGFILE: ${DB_ADMIN_ACCESS_LOG:-/dev/null}
+      PGADMIN_CONFIG_CONSOLE_LOG_LEVEL: ${DB_ADMIN_CONSOLE_LOG_LEVEL:-40}
+      PGADMIN_DEFAULT_EMAIL: ${DB_ADMIN_DEFAULT_EMAIL:-pgadmin@localhost.local}
+      PGADMIN_DEFAULT_PASSWORD: ${DB_ADMIN_DEFAULT_PASSWORD:-postgres}
+      PGADMIN_LISTEN_ADDRESS: ${DB_ADMIN_LISTEN_ADDRESS:-0.0.0.0}
+      PGADMIN_SERVER_JSON_FILE: ${DB_ADMIN_SERVER_JSON_FILE:-/servers/servers.json}
+    ports:
+      - '${DB_ADMIN_HOST:-127.0.0.1}:${DB_ADMIN_PORT:-3002}:80'
+    restart: ${RESTART_POLICY:-unless-stopped}
+    volumes:
+      - ./secrets/db-admin/:/servers/
+  

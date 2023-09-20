@@ -1,0 +1,18 @@
+# WARNING: This is a whitelist instead of a blacklist ignore
+# See: https://moshen.net/posts/use-a-whitelist/
+# Why? see: https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#understand-build-context
+
+# Disallow all files
+*
+**
+
+# Root level
+!./package.json
+!./package-lock.json
+
+# Package backend
+!./backend/
+./backend/.env
+
+# Package /frontend
+

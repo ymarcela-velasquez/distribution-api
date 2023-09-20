@@ -1,0 +1,7 @@
+node_modules
+*.log
+.env
+.vscode/
+docker/docker-compose.yml
+docker/env/*
+.direnv
