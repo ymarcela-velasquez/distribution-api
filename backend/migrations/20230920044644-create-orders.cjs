@@ -56,6 +56,13 @@ const attributes = {
     type: Sequelize.STRING,
     field: 'postal_code',
   }, 
+  status: {
+    allowNull: false,
+    type: Sequelize.ENUM,
+    values: ['RECEIVED', 'SENT', 'DELIVERED', 'CANCELED'],
+    defaultValue: 'RECEIVED',
+    field: 'status',
+  },
   createdAt: {
     allowNull: false,
     type: Sequelize.DATE,

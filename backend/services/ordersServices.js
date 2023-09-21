@@ -11,7 +11,20 @@ const readByIdService = async (id) => {
 }
 
 const readAllService = async () => {
-  return await Order.findAll()
+  return await Order.findAll({ 
+    include: [
+      {
+        association: 'product',
+        attributes: ['id', 'name', 'description'],
+        required: false,
+      },
+      {
+        association: 'customer',
+        attributes: ['id', 'identification', 'name'],
+        required: false,
+      },
+    ]
+  })
 }
 
 const updateService = async (id, body) => {
