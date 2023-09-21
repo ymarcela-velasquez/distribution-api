@@ -54,6 +54,13 @@ const Orders = (sequelize, DataTypes) => {
         allowNull: true,
         type: DataTypes.STRING,
         field: 'postal_code',
+      },
+      status: {
+        allowNull: false,
+        type: DataTypes.ENUM,
+        values: ['RECEIVED', 'SENT', 'DELIVERED', 'CANCELED'],
+        defaultValue: 'RECEIVED',
+        field: 'status',
       }, 
       createdAt: {
         allowNull: false,
@@ -82,7 +89,7 @@ const Orders = (sequelize, DataTypes) => {
 
   Order.associate = (models) => {
     models.Order.belongsTo(models.Customer, { foreignKey: 'customerId', as: 'customer' })
-    models.Order.belongsTo(models.Product, { foreignKey: 'orderId', as: 'product' })
+    models.Order.belongsTo(models.Product, { foreignKey: 'productId', as: 'product' })
   }
 
   return Order
