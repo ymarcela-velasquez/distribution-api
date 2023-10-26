@@ -6,3 +6,4 @@ docker/docker-compose.yml
 docker/env/*
 .direnv
 test-results
+coverage

@@ -8,7 +8,8 @@
     "migrate": "APP_ENV=development sequelize-cli db:migrate",
     "migrate:undo": "APP_ENV=development sequelize-cli db:migrate:undo",
     "migrate:undo:all": "APP_ENV=development sequelize-cli db:migrate:undo:all",
-    "test": "APP_ENV=test NODE_OPTIONS=--experimental-vm-modules jest --rootDir=. --config ./jest.config.cjs --runInBand --verbose --colors"
+    "test": "APP_ENV=test NODE_OPTIONS=--experimental-vm-modules jest --rootDir=. --config ./jest.config.cjs --runInBand --verbose --colors",
+    "coverage:generate": "APP_ENV=test NODE_OPTIONS=--experimental-vm-modules jest --rootDir=. --config ./jest.config.cjs --runInBand --coverage"
   },
   "author": "Yuly Velásquez, Mario Muñetón, Alonso Barrios",
   "license": "ISC",
