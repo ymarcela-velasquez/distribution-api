@@ -26,11 +26,11 @@ switch (process.env.APP_ENV) {
       namespace: 'DEV_',
       environment: 'development',
       port: process.env.PORT ?? 4000,
-      dbPort: process.env.DB_PORT ?? 4001,
+      dbPort: process.env.DB_PORT ?? 5432,
       dbDatabase: process.env.DB_DATABASE ?? 'postgres',
       dbUsername: process.env.DB_USERNAME ?? 'postgres',
       dbPassword: process.env.DB_PASSWORD ?? 'postgres',
-      dbHost: process.env.DB_HOST ?? 'localhost',
+      dbHost: process.env.DB_HOST ?? 'postgres.cjz4vya8euig.us-east-2.rds.amazonaws.com',
     }
     break
     
