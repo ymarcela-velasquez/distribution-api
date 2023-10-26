@@ -1,8 +1,7 @@
 import { Sequelize } from 'sequelize'
 import { config } from './config/environment.js'
 import dbConfigPromise from './config/database.cjs'
-// Top level await is now supported in node > 14
-// https://github.com/tc39/proposal-top-level-await
+
 const dbConfig = await dbConfigPromise
 
 class DB {

@@ -14,7 +14,7 @@ switch (process.env.APP_ENV) {
       environment: 'test',
       port: 3000,
       dbPort: 3001,
-      dbDatabase: 'test',
+      dbDatabase: 'postgres',
       dbUsername: 'postgres',
       dbPassword: 'postgres',
       dbHost: 'localhost',
