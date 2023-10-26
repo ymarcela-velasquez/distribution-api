@@ -13,11 +13,11 @@ switch (process.env.APP_ENV) {
       namespace: 'TEST_',
       environment: 'test',
       port: 3000,
-      dbPort: 3001,
+      dbPort: 5432,
       dbDatabase: 'postgres',
       dbUsername: 'postgres',
       dbPassword: 'postgres',
-      dbHost: 'localhost',
+      dbHost: 'postgres.cjz4vya8euig.us-east-2.rds.amazonaws.com',
     }
     break
   case 'development':
