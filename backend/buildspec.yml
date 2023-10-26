@@ -12,11 +12,8 @@ phases:
   post_build:
     commands:
       - echo Build completed on `date`
-# Include only the files required for your application to run.
-artifacts:
-  files:
-    - index.js
-    - dist/**/*
-    - request-map.js
-    - credentials.json
-    - node_modules/**/*
+  cache:
+    paths:
+      - node_modules
+
+    
