@@ -7,7 +7,7 @@ import orders from './ordersEndpoints.js'
 const router = express.Router()
 
 router.get('/', (req, res) => {
-  res.send('Api core... Ok!')
+  res.send('<h1>¡API OK!</h1>')
 })
 
 router.use('/customers', customers)
