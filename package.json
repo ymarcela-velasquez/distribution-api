@@ -4,7 +4,7 @@
   "description": "API for distribution macroprocess",
   "main": "index.js",
   "scripts": {
-    "start": "APP_ENV=development nodemon index.js",
+    "start": "APP_ENV=development node index.js",
     "migrate": "APP_ENV=development sequelize-cli db:migrate",
     "migrate:undo": "APP_ENV=development sequelize-cli db:migrate:undo",
     "migrate:undo:all": "APP_ENV=development sequelize-cli db:migrate:undo:all",
