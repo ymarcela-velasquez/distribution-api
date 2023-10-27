@@ -25,7 +25,7 @@ switch (process.env.APP_ENV) {
     config = {
       namespace: 'DEV_',
       environment: 'development',
-      port: process.env.PORT ?? 4000,
+      port: process.env.PORT ?? 8081,
       dbPort: process.env.DB_PORT ?? 5432,
       dbDatabase: process.env.DB_DATABASE ?? 'postgres',
       dbUsername: process.env.DB_USERNAME ?? 'postgres',
