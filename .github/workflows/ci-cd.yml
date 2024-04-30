@@ -11,8 +11,8 @@ on:
         default: 'Reason to run the workflow'
 env:
   APP_NAME: distribution-api
-  NAMESPACE:
-  IMAGE_TAG:
+  NAMESPACE: default
+  IMAGE_TAG: ${{ github.sha }}  
   GCP_REGISTRY: us-central1-docker.pkg.dev
   GCP_REPOSITORY: eafit-ar
   GCP_PROJECT_ID: gothic-agility-415819
