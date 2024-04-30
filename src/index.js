@@ -21,4 +21,3 @@ try {
 app.listen(config.port, async () => {
   console.log(`[Express] Server running on port ${config.port}`)
 })
-
